@@ -110,6 +110,7 @@ void displayAllBooks(Book_Details_t *book_details, uint32_t *book_count) {
     }
     else
         printf("Books are Empty!!\n");
+        printf("\n");
 
 
 }
@@ -154,7 +155,27 @@ void markBookBorrow_Return(Book_Details_t *book_details, uint32_t *book_count) {
 
 void deleteBook(Book_Details_t *book_details, uint32_t *book_count) {
 
+    uint32_t book_id = 0;
+    printf("Please Enter Book ID: ");
+    scanf("%d",&book_id);
 
+    for (uint32_t i = 0; i< (*book_count); i++) {
+
+        if(book_details[i].book_id == book_id) {
+
+            for (uint32_t j = i; j<(*book_count)-1; j++) {
+
+                book_details[j] =book_details[j+1];
+
+
+            }
+            (*book_count)--;
+            return;
+
+        }
+
+        printf("Invalid Book ID!\n");
+    }
 
 
 }
